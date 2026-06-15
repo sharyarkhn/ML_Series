@@ -724,7 +724,7 @@ print(df)
 # # # Modifies the continuous values across an entire structural column uniformly.
 
 df["Salary"] = df["Salary"] * 1.5
-#Vectorized Column In-Place Scaling (Salary * 1.5)
+# Updating whole row or column
 print(df)
 
 
@@ -762,18 +762,15 @@ data_missing = {
 }
 
 df_nan = DataFrame(data_missing)
-# Baseline DataFrame with Structural Missing Values
 print(df_nan)
 
 # # # Technique A: Coordinate-Wise Boolean Flags
 # # # Syntax: df.isnull() or df.isna() -> Maps cell validations to boolean arrays.
-
 # Scalar Boolean Flag Matrix (.isnull())
 print(df_nan.isnull())
 
 # # # Technique B: Structural Aggregate Log Counts
 # # # Syntax: df.isnull().sum() -> Collates aggregate totals per vertical structural column.
-
 # Cumulative Count of Missing Matrix Profiles (.isnull().sum())
 print(df_nan.isnull().sum())
 
@@ -814,7 +811,7 @@ df_default_drop.dropna(inplace=True)
 # # # Replaces missing values with continuous baselines or structural descriptive statistics.
 
 df_fill_static = df_nan.copy()
-df_fill_static.fillna(1, inplace=True)
+df_fill_static.fillna(1, inplace=True) #it fills all the missing values with 1
 # Scalar Value Imputation (.fillna(1))
 print(df_fill_static)
 
